@@ -139,8 +139,6 @@ class PlayList {
             size++;
             return true;
         }
-        size++;
-        return true;
       }                      
        return false;
     }

@@ -123,24 +123,33 @@ class PlayList {
 
 
  
-    public boolean add(int i, Track track) {
-       if(size == 0){
-        tracks[0] = track;
-        size++;
-        return true;
-       }
-       if((i<0) || (i > maxSize) || (maxSize==size) ){
-           return false;
-       }
-       for(int j = size; j>i; j--){
-        tracks[j+1] = tracks[j];
-        if (i == j){
-            tracks[i] = track;
+    public boolean add(int index, Track track) {
+        // Case: Index is out of bounds or list is full
+        if (index < 0 || index > size || size == maxSize) {
+            return false;
+        }
+        
+        // Case: Adding to an empty list
+        if (size == 0) {
+            tracks[0] = track;
             size++;
             return true;
         }
-      }                      
-       return false;
+        
+        // Case: Adding at the end of the list
+        if (index == size) {
+            tracks[index] = track;
+            size++;
+            return true;
+        }
+        
+        // Case: Adding in between
+        for (int i = size - 1; i >= index; i--) {
+            tracks[i + 1] = tracks[i];
+        }
+        tracks[index] = track;
+        size++;
+        return true;
     }
      
     /** Removes the track in the given index from this list.

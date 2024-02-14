@@ -98,10 +98,10 @@ class PlayList {
     public int totalDuration() {
         int count = 0;
         for (int i = 0; i < maxSize; i++) {
-            if(tracks[i]!=null &&  tracks[i].duration != null){
+            if(tracks[i]==null){
+                continue;
             }
-            count += tracks[i].duration;
-           
+            count += tracks[i].getDuration();           
         }
         return count;
     }
@@ -198,14 +198,14 @@ class PlayList {
        int minimum = -1;
        int helper=0;
        if(tracks[start] != null){
-           minimum = tracks[start].duration;
+           minimum = tracks[start].getDuration();
         }
        for (int i = start; i < size; i++) {
            if(tracks[i]== null){
                continue;
               }
-               if(minimum > tracks[i].duration){
-                   minimum = tracks[i].duration;
+               if(minimum > tracks[i].getDuration()){
+                   minimum = tracks[i].getDuration();
                     helper = i;                      
        }
    }
@@ -235,7 +235,7 @@ class PlayList {
             if(tracks[j]==null){
                 continue;
             }
-            if (tracks[j].duration < tracks[minIndex].duration) {
+            if (tracks[j].getDuration() < tracks[minIndex].getDuration()) {
                 minIndex = j;
             }
         }
@@ -251,7 +251,6 @@ class PlayList {
         }
     }
     
- 
 
 
 

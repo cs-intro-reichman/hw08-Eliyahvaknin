@@ -243,7 +243,14 @@ class PlayList {
         swap(tracks, i, minIndex);
             }
         }
+        public void swap(Track[] array, int i, int j) {
+            Track temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
     }
+    
+
 
 
 

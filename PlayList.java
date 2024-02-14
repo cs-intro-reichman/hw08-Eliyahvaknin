@@ -8,7 +8,7 @@ class PlayList {
     /** Constructs an empty play list with a maximum number of tracks. */ 
     public PlayList(int maxSize) {
         this.maxSize = maxSize;
-        tracks = new Track[maxSize];
+        tracks = new Track[maxSize];// Array of track objects
         size = 0;
     }
 
@@ -23,7 +23,7 @@ class PlayList {
     }
 
     /** Method to get a track by index */
-    public Track getTrack(int index) {
+    public Track getTrack(int index) {// Get the track
         if (index >= 0 && index < size) {
             return tracks[index];
         } else {
@@ -54,7 +54,7 @@ class PlayList {
     /** Returns the data of this list, as a string. Each track appears in a separate line. */
     //// For an efficient implementation, use StringBuilder.
     public String toString() {
-        StringBuilder listOfSongs= new StringBuilder("\n");
+        StringBuilder listOfSongs= new StringBuilder("\n");//String.valueOf(size
         for (int i = 0; i < maxSize ; i++) {
             if(tracks[i]==null){
                 continue;
@@ -70,6 +70,7 @@ class PlayList {
 
             }
         }
+
     return listOfSongs.toString();
 
     }
@@ -97,8 +98,7 @@ class PlayList {
     public int totalDuration() {
         int count = 0;
         for (int i = 0; i < maxSize; i++) {
-            if(tracks[i]==null){
-                continue;
+            if(tracks[i]!=null &&  tracks[i].duration != null){
             }
             count += tracks[i].duration;
            
@@ -151,9 +151,7 @@ class PlayList {
         size--;
     }
 
-    /** Removes the first track that has the given title from this list.
-     *  If such a track is not found, or the list is empty, or the given index
-     *  is negative or too big for this list, does nothing. */
+ 
     public void remove(String title) {
         if(size==0 ){
             return;
@@ -180,6 +178,7 @@ class PlayList {
             return;
         } 
         for(int i = 0; i < other.maxSize; i++) {
+            
             for(int j = 0; j < maxSize; j++) {
             if (other.tracks[i]!=null && tracks[j]==null) {
                 tracks[j] = other.tracks[i];
@@ -240,16 +239,19 @@ class PlayList {
                 minIndex = j;
             }
         }
+        
         swap(tracks, i, minIndex);
             }
         }
         public void swap(Track[] array, int i, int j) {
+            //swapping
             Track temp = array[i];
             array[i] = array[j];
             array[j] = temp;
         }
     }
     
+ 
 
 
 

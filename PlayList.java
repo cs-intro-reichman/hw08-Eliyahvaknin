@@ -132,8 +132,13 @@ class PlayList {
        if((i<0) || (i > maxSize) || (maxSize==size) ){
            return false;
        }
-       for(int j=size; j>i; j--){
+       for(int j = size; j>i; j--){
         tracks[j] = tracks[j-1];
+        if (i == j){
+            tracks[i] = track;
+            size++;
+            return true;
+        }
         size++;
         return true;
       }                      
